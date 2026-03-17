@@ -14,11 +14,11 @@ downloaded miniconda and mafft
 mafft cobra_data > cobra-aligned-mafft.fasta
 # Maximum Likelihood Method 
 I chose IQ-tree - estimates aphylogenetic tree that makes the observed sequence data most probable
-Assumptions: 
+# Assumptions: 
 1. each site in alignment evolves independently
 2. evolution follows substitution model
 3. tree is bifuricating
-limitations
+# limitations
 1. computationally intensive for large datasets
 2. results depend on model selection
 3. may get stuck in local optima instead of the true global best tree
