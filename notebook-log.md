@@ -32,9 +32,9 @@ I chose IQ-tree - estimates aphylogenetic tree that makes the observed sequence 
 **ML method steps** 
 **# Step 1: Run IQ-TREE
 
-iqtree2 -s my_alignment.fasta -m MFP -bb 1000 -nt AUTO
+(base) PS C:\Users\sophi\bot\iqtree\iqtree-3.1.0-Windows\bin> .\iqtree3.exe -s C:\Users\sophi\bot\cobra-aligned-mafft.fasta -m MFP -bb 1000 -nt AUTO
 
- - '-s my_alignment.fasta': Input alignment file
+ - '-s cobra-aligned-mafft.fasta': Input alignment file
  - '-m MFP': Automatically selects the best substitution model
  - '-bb 1000': Perform 1000 ultrafast bootstrap replicates for branch support
  - '-nt AUTO': Use all available CPU threads
