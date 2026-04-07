@@ -33,7 +33,11 @@ My data set consists of mitochondrial DNA sequences (cyt b and ND4) from the Cas
 # QC
 My data does not have raw reads or UCEs
 # command used for alignment 
-mafft cobra_data > cobra-aligned-mafft.fasta
+- run data through mafft and retitle 
+mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
+- check to ensure mafft worked by showing first 10 lines
+  head cobra-aligned-mafft.fasta
+
 # Maximum Likelihood Method 
 I chose IQ-tree - estimates aphylogenetic tree that makes the observed sequence data most probable
 
