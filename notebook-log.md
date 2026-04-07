@@ -1,4 +1,24 @@
 ﻿# Notebook Log
+ 
+# project structure 
+project is organized as follows: 
+- 'data/' -> raw and aligned sequence data
+- 'scripts/' -> scripts
+- 'results/' -> output files
+- 'figures/'
+- 'manuscripts/'
+
+# Workflow Overview 
+1. obtain sequence data
+2. perform sequence alignment using MAFFT
+3. Infer phylogenetic tree using maximum likelihood
+4. evaluate
+
+   - changes staged using 'git add'
+   - saved using 'git commit'
+   - uploaded using 'git push'
+
+ 
 # data description 
 Source: https://datadryad.org/dataset/doi:10.5061/dryad.r7sqv9s97
 My data set consists of mitochondrial DNA sequences (cyt b and ND4) from the Caspian Cobra and related Asain Cobras, sampled across Iran, Afghanistan and Turkmenistan for phylogenetic analysis.
