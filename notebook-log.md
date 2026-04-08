@@ -38,6 +38,30 @@ mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
 - check to ensure mafft worked by showing first 10 lines
   head cobra-aligned-mafft.fasta
 
+# building phylogenetic trees
+- download r-studio
+- set my working directory
+  setwd("C:/Users/sophi/bot/data")
+- load the alignment (neighbor-joining tree method)
+  alignment <- read.dna("cobra-aligned-mafft.fasta", format = "fasta")
+- compute the genetic distances
+  dist_matrix <- dist.dna(alignment, model = "K80")
+- construct the neighbor-joining tree
+  tree_nj <- nj(dist_matrix)
+- save the tree as an image to include in my repository
+  png("nj_tree.png", width = 1200, height = 1200, res = 150)
+plot(tree_nj, main = "Neighbor-Joining Tree of Asian Cobras")
+dev.off()
+- Parsimony method ( same steps different code )
+alignment_phydat <- phyDat(as.character(alignment), type = "DNA")
+tree_mp <- pratchet(alignment_phydat)
+
+plot(tree_mp, main = "Maximum Parsimony Tree")
+write.tree(tree_mp, "mp_tree.nwk")
+
+png("mp_tree.png", width = 1200, height = 1200, res = 150)
+plot(tree_mp, main = "Maximum Parsimony Tree")
+dev.off()
 # Maximum Likelihood Method 
 I chose IQ-tree - estimates aphylogenetic tree that makes the observed sequence data most probable
 
