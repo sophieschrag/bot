@@ -32,6 +32,7 @@ Source: https://datadryad.org/dataset/doi:10.5061/dryad.r7sqv9s97
 My data set consists of mitochondrial DNA sequences (cyt b and ND4) from the Caspian Cobra and related Asain Cobras, sampled across Iran, Afghanistan and Turkmenistan for phylogenetic analysis.
 # QC
 My data does not have raw reads or UCEs
+
 # command used for alignment 
 - run data through mafft and retitle 
 mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
@@ -40,20 +41,21 @@ mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
 # Neighbor joining Tree method
 - (Saitou & Nei, 1987)
 - reconstructs phylogneies from pairwise genetic distances
-- assumptions: genetic distances accurately reflect evolutionary divergence
+  **assumptions:** genetic distances accurately reflect evolutionary divergence
   Sites evolve independently according to substitution model
-- advantages: fast and suitable for larger data sets
-- limitations: does not explicitely model sequence evolution
+  **advantages:** fast and suitable for larger data sets
+  **limitations:** does not explicitely model sequence evolution
 # Parsimony-based Phylogeny 
 - identifies the tree requiring the fewest evolutionary changes
-- assumptions: simplest evolutionary tree is most likely
-- advantages: effective for closely related taxa
-- limitations: computationally intensive and sensitive to honmoplasy
+  **assumptions:** simplest evolutionary tree is most likely
+  **advantages:** effective for closely related taxa
+  **limitations:** computationally intensive and sensitive to honmoplasy
   
 # building phylogenetic trees
 - download r-studio
 - set my working directory
   setwd("C:/Users/sophi/bot/data")
+  **NJ tree method**
 - load the alignment (neighbor-joining tree method)
   alignment <- read.dna("cobra-aligned-mafft.fasta", format = "fasta")
 - compute the genetic distances
@@ -64,7 +66,8 @@ mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
   png("nj_tree.png", width = 1200, height = 1200, res = 150)
 plot(tree_nj, main = "Neighbor-Joining Tree of Asian Cobras")
 dev.off()
-- Parsimony method ( same steps different code )
+  **Parsimony method**
+  ( same steps different code )
 alignment_phydat <- phyDat(as.character(alignment), type = "DNA")
 tree_mp <- pratchet(alignment_phydat)
 
@@ -74,31 +77,19 @@ write.tree(tree_mp, "mp_tree.nwk")
 png("mp_tree.png", width = 1200, height = 1200, res = 150)
 plot(tree_mp, main = "Maximum Parsimony Tree")
 dev.off()
+
 # Maximum Likelihood Method 
-I chose IQ-tree - estimates aphylogenetic tree that makes the observed sequence data most probable
-
-
+I chose IQ-tree. It builds phylogenetic trees using maximum likelihood. It starts with a bunch of candidate trees (often from maximum parsimony) and keeps updating them as it finds better ones.
 **Assumptions:**
 1. each site in alignment evolves independently
 2. evolution follows substitution model
-3. tree is bifuricating
-
-   
+3. there is a sufficient sequence length
 **limitations**
-1. computationally intensive for large datasets
-2. results depend on model selection
-3. may get stuck in local optima instead of the true global best tree
+1. computationally intensive for larger sets of dara
+2. relies on alignment quality
+3. assumes a single-tree explains the data
+**ML method steps**
+- Run IQ tree on aligned data
 
-   
-**ML method steps** 
-**# Step 1: Run IQ-TREE
-
-(base) PS C:\Users\sophi\bot\iqtree\iqtree-3.1.0-Windows\bin> .\iqtree3.exe -s C:\Users\sophi\bot\cobra-aligned-mafft.fasta -m MFP -bb 1000 -nt AUTO
-
- - '-s cobra-aligned-mafft.fasta': Input alignment file
- - '-m MFP': Automatically selects the best substitution model
- - '-bb 1000': Perform 1000 ultrafast bootstrap replicates for branch support
- - '-nt AUTO': Use all available CPU threads
-#- This script is fully reproducible: running it again will perform the same analysis******
 **
 
