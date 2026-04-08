@@ -37,7 +37,19 @@ My data does not have raw reads or UCEs
 mafft cobra_data > cobra-aligned-mafft.fasta (on WSL terminal)
 - check to ensure mafft worked by showing first 10 lines
   head cobra-aligned-mafft.fasta
-
+# Neighbor joining Tree method
+- (Saitou & Nei, 1987)
+- reconstructs phylogneies from pairwise genetic distances
+- assumptions: genetic distances accurately reflect evolutionary divergence
+  Sites evolve independently according to substitution model
+- advantages: fast and suitable for larger data sets
+- limitations: does not explicitely model sequence evolution
+# Parsimony-based Phylogeny 
+- identifies the tree requiring the fewest evolutionary changes
+- assumptions: simplest evolutionary tree is most likely
+- advantages: effective for closely related taxa
+- limitations: computationally intensive and sensitive to honmoplasy
+  
 # building phylogenetic trees
 - download r-studio
 - set my working directory
