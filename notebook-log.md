@@ -90,6 +90,6 @@ I chose IQ-tree. It builds phylogenetic trees using maximum likelihood. It start
 3. assumes a single-tree explains the data
 **ML method steps**
 - Run IQ tree on aligned data
-
-**
+(base) PS C:\Users\sophi\Downloads\iqtree-3.1.1-Windows (1)\iqtree-3.1.1-Windows\bin> iqtree3 -s "C:\Users\Sophi\bot\data\cobra-aligned-mafft.fasta"
+- check output files (in same folder as input)
 
