@@ -1,0 +1,18 @@
+begin mrbayes;
+    set autoclose=yes;
+
+  
+    lset nst=6 rates=invgamma;
+
+  
+    prset brlenspr=unconstrained:exp(10.0);
+    prset shapepr=exp(1.0);
+    prset tratiopr=beta(1.0,1.0);
+    prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
+
+
+    mcmcp ngen=10000 samplefreq=100 printfreq=1000 diagnfreq=1000;
+
+    mcmc;
+    sumt;
+end;
