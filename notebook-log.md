@@ -99,6 +99,25 @@ Convert my aligned data to a .nex file so that it can be run through Mr.Bayes
 > write.nexus.data(alignment, file = "cobra-aligned-mafft.nex", format = "dna")
 **creating my mr.Bayes block**
 - No outgroup was specified becayse every sequence in the data set belongs to the genus _Naja._ The phylogeny is inferred as unrooted. Outgroups for future analyses could include closely related elapids.
-- 
+    [start block]
+- begin mrbayes;
+    [automatic exit after all commands are run]
+    set autoclose=yes 
+
+    [Set priors for branch length, gamma shape parameter, transition/transversion rate ratio/nucleotide base frequencies]
+    prset brlenspr=unconstrained:exp(10.0);
+    prset shapepr=exp(1.0);
+    prset tratiopr=beta(1.0,1.0);
+    prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
+
+  [Specify the substitution model - default prior for DNA data]
+    lset nst=6 rates=invgamma 
+
+    [MCMC settings - parameters for MCMC run]
+    mcmcp ngen=10000 samplefreq=100 printfreq=1000 diagnfreq=1000;
+
+    mcmc;
+    sumt;
+end;
 
 
