@@ -93,7 +93,14 @@ I chose IQ-tree. It builds phylogenetic trees using maximum likelihood. It start
 (base) PS C:\Users\sophi\Downloads\iqtree-3.1.1-Windows (1)\iqtree-3.1.1-Windows\bin> iqtree3 -s "C:\Users\Sophi\bot\data\cobra-aligned-mafft.fasta"
 - check output files (in same folder as input)
 # Mr.Bayes 
-
+- MrBayes uses Bayesian interference with MCMC to estimate posterior probabilities of phylogenetic trees
+**Assumptions**
+- sequences evolve according to specified substitution model
+- alignment is correct
+- priors are accurate
+**Limitations**
+- computationally intensive
+- sensitive to priors and model choice
 Convert my aligned data to a .nex file so that it can be run through Mr.Bayes
 > alignment <- read.dna("cobra-aligned-mafft.fasta", format = "fasta")
 > write.nexus.data(alignment, file = "cobra-aligned-mafft.nex", format = "dna")
@@ -119,5 +126,16 @@ Convert my aligned data to a .nex file so that it can be run through Mr.Bayes
     mcmc;
     sumt;
 end;
+- saved my block as "mbblock.txt" 
 
-
+ - then to combine the Mr.Bayes block to the end of my nexus file with my data
+   Get-content cobra-aligned-mafft.nex, mmblock.txt | set-content cobra-aligned-mafft-mb.nex
+- I then ran MrBayes through the mrbayes terminal
+  MrBayes > execute C:Users\sophi\Bot\data\cobra-aligned-mafft-mb.nex
+- I then plotted the tree on R studio
+> tree <- read.nexus("cobra-aligned-mafft-mb.nex.con.tre")
+> plot(tree,cex = 0.6)
+> title ("Bayesian Phylogeny of Naja (MB")
+> nodelabels(tree$node.label, cex = 0.5, frame = "none")
+> pdf("cobra_mrbayes_tree.pdf")
+> plot(tree, cex = 0.6)
