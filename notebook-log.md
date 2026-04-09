@@ -92,4 +92,10 @@ I chose IQ-tree. It builds phylogenetic trees using maximum likelihood. It start
 - Run IQ tree on aligned data
 (base) PS C:\Users\sophi\Downloads\iqtree-3.1.1-Windows (1)\iqtree-3.1.1-Windows\bin> iqtree3 -s "C:\Users\Sophi\bot\data\cobra-aligned-mafft.fasta"
 - check output files (in same folder as input)
+# Mr.Bayes 
+
+Convert my aligned data to a .nex file so that it can be run through Mr.Bayes
+> alignment <- read.dna("cobra-aligned-mafft.fasta", format = "fasta")
+> write.nexus.data(alignment, file = "cobra-aligned-mafft.nex", format = "dna")
+
 
