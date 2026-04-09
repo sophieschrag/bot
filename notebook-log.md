@@ -97,5 +97,8 @@ I chose IQ-tree. It builds phylogenetic trees using maximum likelihood. It start
 Convert my aligned data to a .nex file so that it can be run through Mr.Bayes
 > alignment <- read.dna("cobra-aligned-mafft.fasta", format = "fasta")
 > write.nexus.data(alignment, file = "cobra-aligned-mafft.nex", format = "dna")
+**creating my mr.Bayes block**
+- No outgroup was specified becayse every sequence in the data set belongs to the genus _Naja._ The phylogeny is inferred as unrooted. Outgroups for future analyses could include closely related elapids.
+- 
 
 
