@@ -139,3 +139,28 @@ end;
 > nodelabels(tree$node.label, cex = 0.5, frame = "none")
 > pdf("cobra_mrbayes_tree.pdf")
 > plot(tree, cex = 0.6)
+
+
+## coalescent method - ASTRAL 
+- analysis of gene tree (ran ASTRAL on the provided data set)
+- ASTRAL is a summary method that estimatese species trees under MSC. ASTRAL combines independently estimated gene trees
+  **assumptions**
+  - gene trees generated under MSC
+  - gene trees independently sampled
+  **limitations**
+  - sensitive to estimation error
+  - does not model gene duplication/loss
+**software**
+  - ASTRAL
+  - Rstudio
+  - ape package
+  - java
+
+ **running ASTRAL**
+ java -jar astral.5.7.8.jar \
+  -i song_mammals.424.gene.tre \
+  -o song-astral.tre
+
+  (-i is input; -o is output)
+ 
+
